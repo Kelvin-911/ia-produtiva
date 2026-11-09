@@ -1,0 +1,10 @@
+# Configuração do site. Troque base_url depois de criar o repositório no GitHub:
+# https://SEU-USUARIO.github.io/NOME-DO-REPO/  (ou o seu domínio próprio depois)
+nome: "IA Produtiva"
+descricao: "Reviews e comparativos de ferramentas de IA e produtividade, em português."
+base_url: "https://SEU-USUARIO.github.io/NOME-DO-REPO/"
+idioma: "pt-BR"
+aviso_afiliado: >
+  Alguns links neste site são links de afiliado. Se você clicar e comprar algo,
+  podemos receber uma pequena comissão, sem custo adicional para você. Isso ajuda a
+  manter o site funcionando. Só recomendamos ferramentas que avaliamos de verdade.

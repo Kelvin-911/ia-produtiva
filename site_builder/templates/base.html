@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ site.idioma }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site.nome }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ site.descricao }}{% endblock %}">
+  <link rel="stylesheet" href="{{ root }}style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ root }}">{{ site.nome }}</a>
+    <p class="tagline">{{ site.descricao }}</p>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <p>{{ site.aviso_afiliado }}</p>
+    <p>&copy; {{ year }} {{ site.nome }}</p>
+  </footer>
+</body>
+</html>

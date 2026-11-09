@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="post-list">
+  {% for post in posts %}
+  <li class="post-card">
+    <a href="{{ root }}posts/{{ post.frontmatter.slug }}/">
+      <h2>{{ post.frontmatter.title }}</h2>
+    </a>
+    <p class="meta">{{ post.frontmatter.date }}</p>
+    <p>{{ post.frontmatter.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

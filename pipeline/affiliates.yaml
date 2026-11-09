@@ -1,0 +1,39 @@
+# Mapa de ferramenta -> link de afiliado.
+# Troque cada "url" pelo seu link real depois de se cadastrar no programa de afiliados
+# correspondente (veja SETUP.md). Enquanto estiver com o placeholder, o link aponta
+# para o site oficial da ferramenta (sem comissão) para não quebrar a navegação do leitor.
+
+notion:
+  nome: "Notion"
+  url: "https://www.notion.com/"
+  comissao: "substitua pelo seu link de afiliado Notion"
+
+jasper:
+  nome: "Jasper AI"
+  url: "https://www.jasper.ai/"
+  comissao: "substitua pelo seu link de afiliado Jasper"
+
+perplexity:
+  nome: "Perplexity AI"
+  url: "https://www.perplexity.ai/"
+  comissao: "substitua pelo seu link de afiliado, se houver"
+
+canva:
+  nome: "Canva"
+  url: "https://www.canva.com/"
+  comissao: "substitua pelo seu link de afiliado Canva"
+
+hostinger:
+  nome: "Hostinger"
+  url: "https://www.hostinger.com.br/"
+  comissao: "substitua pelo seu link de afiliado Hostinger"
+
+elevenlabs:
+  nome: "ElevenLabs"
+  url: "https://elevenlabs.io/"
+  comissao: "substitua pelo seu link de afiliado, se houver"
+
+amazon_livros:
+  nome: "Amazon Associates BR"
+  url: "https://www.amazon.com.br/"
+  comissao: "substitua pelo seu link de afiliado Amazon Associates"

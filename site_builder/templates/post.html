@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ post.frontmatter.title }} — {{ site.nome }}{% endblock %}
+{% block description %}{{ post.frontmatter.description }}{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ post.frontmatter.title }}</h1>
+  <p class="meta">{{ post.frontmatter.date }}</p>
+  <div class="post-body">{{ post.html_body|safe }}</div>
+  {% if affiliate %}
+  <aside class="affiliate-cta">
+    <p><strong>Quer testar {{ affiliate.nome }}?</strong>
+    <a href="{{ affiliate.url }}" rel="sponsored noopener" target="_blank">Acesse aqui</a>.</p>
+  </aside>
+  {% endif %}
+  <p><a href="{{ root }}">&larr; Voltar para a página inicial</a></p>
+</article>
+{% endblock %}
