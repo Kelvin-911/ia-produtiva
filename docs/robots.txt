@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://SEU-USUARIO.github.io/NOME-DO-REPO/sitemap.xml
+Sitemap: https://kelvin-911.github.io/ia-produtiva/sitemap.xml

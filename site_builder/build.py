@@ -4,7 +4,9 @@ Builda o site estático a partir de content/posts/*.md -> docs/ (servido pelo Gi
 Uso: python site_builder/build.py
 """
 import datetime
+import os
 import shutil
+import stat
 import sys
 from pathlib import Path
 
@@ -39,7 +41,13 @@ def build():
     posts = load_posts()
 
     if OUT_DIR.exists():
-        shutil.rmtree(OUT_DIR)
+        # Pastas sincronizadas pelo OneDrive ficam read-only; limpa o atributo
+        # antes de remover em vez de falhar com PermissionError.
+        def _force_remove(func, path, exc):
+            os.chmod(path, stat.S_IWRITE)
+            func(path)
+
+        shutil.rmtree(OUT_DIR, onexc=_force_remove)
     OUT_DIR.mkdir(parents=True)
     shutil.copytree(STATIC_DIR, OUT_DIR, dirs_exist_ok=True)
 
