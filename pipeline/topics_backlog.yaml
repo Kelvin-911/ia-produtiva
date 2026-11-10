@@ -41,7 +41,7 @@
 - id: notion-vs-clickup-gestao-projetos
   title: 'Notion vs ClickUp: qual usar para gestão de projetos com IA'
   tool: notion
-  status: pending
+  status: done
 - id: ia-generativa-texto-comparativo-ferramentas
   title: 'IA generativa de texto: comparativo das principais ferramentas'
   tool: null
