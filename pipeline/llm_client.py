@@ -23,11 +23,14 @@ def _generate_gemini(prompt: str) -> str:
     # Configurável porque a Google aposenta nomes de modelo de tempos em tempos
     # (ex: gemini-2.0-flash foi descontinuado em favor do gemini-3.8-flash).
     model = os.environ.get("GEMINI_MODEL") or "gemini-3.8-flash"
-    resp = requests.post(
-        f"{GEMINI_API_BASE}/{model}:generateContent?key={api_key}",
-        json={"contents": [{"parts": [{"text": prompt}]}]},
-        timeout=120,
-    )
+    try:
+        resp = requests.post(
+            f"{GEMINI_API_BASE}/{model}:generateContent?key={api_key}",
+            json={"contents": [{"parts": [{"text": prompt}]}]},
+            timeout=150,
+        )
+    except requests.exceptions.RequestException as exc:
+        raise LLMError(f"Falha de rede ao chamar a Gemini API: {exc}") from exc
     if resp.status_code != 200:
         raise LLMError(f"Gemini API falhou ({resp.status_code}): {resp.text[:500]}")
     data = resp.json()
@@ -41,20 +44,23 @@ def _generate_anthropic(prompt: str) -> str:
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         raise LLMError("ANTHROPIC_API_KEY não configurada.")
-    resp = requests.post(
-        ANTHROPIC_URL,
-        headers={
-            "x-api-key": api_key,
-            "anthropic-version": "2023-06-01",
-            "content-type": "application/json",
-        },
-        json={
-            "model": os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5-5"),
-            "max_tokens": 4096,
-            "messages": [{"role": "user", "content": prompt}],
-        },
-        timeout=120,
-    )
+    try:
+        resp = requests.post(
+            ANTHROPIC_URL,
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+                "content-type": "application/json",
+            },
+            json={
+                "model": os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-5-5"),
+                "max_tokens": 4096,
+                "messages": [{"role": "user", "content": prompt}],
+            },
+            timeout=150,
+        )
+    except requests.exceptions.RequestException as exc:
+        raise LLMError(f"Falha de rede ao chamar a Anthropic API: {exc}") from exc
     if resp.status_code != 200:
         raise LLMError(f"Anthropic API falhou ({resp.status_code}): {resp.text[:500]}")
     data = resp.json()
