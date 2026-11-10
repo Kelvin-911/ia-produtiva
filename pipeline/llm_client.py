@@ -1,7 +1,10 @@
 """
 Abstração de provedor de LLM.
 
-Hoje usa o tier gratuito do Google Gemini (LLM_PROVIDER=gemini, padrão).
+Hoje usa o tier gratuito do Google Gemini (LLM_PROVIDER=gemini, padrão), com o
+Groq (também gratuito) como backup automático se a Gemini falhar — o tier
+gratuito da Gemini tem ficado instável (503/timeout), então isso evita esperar
+o cron do dia seguinte sempre que a Gemini engasgar.
 Quando o projeto já tiver caixa, troque para LLM_PROVIDER=anthropic + ANTHROPIC_API_KEY
 para usar Claude, sem alterar generate_post.py ou discover_topics.py.
 """
@@ -9,6 +12,7 @@ import os
 import requests
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
+GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 
 
@@ -38,6 +42,35 @@ def _generate_gemini(prompt: str) -> str:
         return data["candidates"][0]["content"]["parts"][0]["text"]
     except (KeyError, IndexError) as exc:
         raise LLMError(f"Resposta inesperada da Gemini API: {data}") from exc
+
+
+def _generate_groq(prompt: str) -> str:
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        raise LLMError("GROQ_API_KEY não configurada.")
+    model = os.environ.get("GROQ_MODEL") or "llama-3.3-70b-versatile"
+    try:
+        resp = requests.post(
+            GROQ_URL,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "content-type": "application/json",
+            },
+            json={
+                "model": model,
+                "messages": [{"role": "user", "content": prompt}],
+            },
+            timeout=150,
+        )
+    except requests.exceptions.RequestException as exc:
+        raise LLMError(f"Falha de rede ao chamar a Groq API: {exc}") from exc
+    if resp.status_code != 200:
+        raise LLMError(f"Groq API falhou ({resp.status_code}): {resp.text[:500]}")
+    data = resp.json()
+    try:
+        return data["choices"][0]["message"]["content"]
+    except (KeyError, IndexError) as exc:
+        raise LLMError(f"Resposta inesperada da Groq API: {data}") from exc
 
 
 def _generate_anthropic(prompt: str) -> str:
@@ -70,12 +103,32 @@ def _generate_anthropic(prompt: str) -> str:
         raise LLMError(f"Resposta inesperada da Anthropic API: {data}") from exc
 
 
+_PROVIDERS = {
+    "gemini": _generate_gemini,
+    "groq": _generate_groq,
+    "anthropic": _generate_anthropic,
+}
+
+
 def generate(prompt: str) -> str:
     # .get(..., default) só vale quando a env var não existe; no GitHub Actions uma
     # secret não configurada chega como string vazia, não ausente — por isso o "or".
     provider = (os.environ.get("LLM_PROVIDER") or "gemini").lower()
-    if provider == "gemini":
-        return _generate_gemini(prompt)
-    if provider == "anthropic":
-        return _generate_anthropic(prompt)
-    raise LLMError(f"LLM_PROVIDER desconhecido: {provider}")
+    fn = _PROVIDERS.get(provider)
+    if fn is None:
+        raise LLMError(f"LLM_PROVIDER desconhecido: {provider}")
+
+    try:
+        return fn(prompt)
+    except LLMError as primary_error:
+        # Só tenta o backup se for diferente do provedor principal e a chave
+        # dele existir — senão é só barulho repetindo o mesmo erro.
+        if provider == "gemini" and os.environ.get("GROQ_API_KEY"):
+            try:
+                return _generate_groq(prompt)
+            except LLMError as backup_error:
+                raise LLMError(
+                    f"Gemini falhou ({primary_error}) e o backup Groq também "
+                    f"falhou ({backup_error})"
+                ) from backup_error
+        raise

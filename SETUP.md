@@ -84,6 +84,13 @@ Comissão de afiliado e renda de anúncio são renda real — a partir de um cer
 você precisa declarar no Imposto de Renda (e dependendo do volume, considerar abrir MEI).
 Isso é uma decisão pessoal/financeira que a automação não toma por você.
 
+## Backup automático (Groq)
+
+O tier gratuito da Gemini às vezes fica instável (sobrecarga, timeout). Por isso já
+configurei o secret `GROQ_API_KEY` (também gratuito, sem cartão): se a Gemini falhar,
+o script tenta o Groq automaticamente na mesma execução, sem esperar o cron do dia
+seguinte. Não precisa fazer nada aqui, já está funcionando.
+
 ## Trocar para a API da Anthropic (Claude) mais tarde
 
 Quando o projeto já estiver gerando receita, crie os secrets `LLM_PROVIDER=anthropic`
