@@ -1,103 +1,80 @@
-# Fila de pautas. status: "done" = já publicado (pelos artigos pilares iniciais ou pela
-# automação). status: "pending" = generate_post.py vai gerar o próximo artigo a partir daqui.
-# discover_topics.py (cron semanal) acrescenta novos itens "pending" no final da lista.
-
 - id: notion-ia-produtividade-2026
-  title: "Notion AI: como usar para produtividade em 2026"
+  title: 'Notion AI: como usar para produtividade em 2026'
   tool: notion
   status: done
-
 - id: jasper-vs-chatgpt-copywriting
-  title: "Jasper AI vs ChatGPT: qual escolher para copywriting"
+  title: 'Jasper AI vs ChatGPT: qual escolher para copywriting'
   tool: jasper
   status: done
-
 - id: perplexity-pesquisa-ia
-  title: "Perplexity AI: substitui o Google para pesquisa?"
+  title: 'Perplexity AI: substitui o Google para pesquisa?'
   tool: perplexity
   status: done
-
 - id: canva-magic-studio-design-ia
-  title: "Canva Magic Studio: design com IA sem saber design"
+  title: 'Canva Magic Studio: design com IA sem saber design'
   tool: canva
   status: done
-
 - id: elevenlabs-narracao-ia
-  title: "ElevenLabs: narração com IA para vídeos e podcasts"
+  title: 'ElevenLabs: narração com IA para vídeos e podcasts'
   tool: elevenlabs
   status: done
-
 - id: melhores-ferramentas-ia-produtividade-2026
-  title: "As melhores ferramentas de IA para produtividade em 2026"
+  title: As melhores ferramentas de IA para produtividade em 2026
   tool: null
   status: done
-
 - id: chatgpt-prompts-produtividade-trabalho
-  title: "Prompts de ChatGPT para ser mais produtivo no trabalho"
+  title: Prompts de ChatGPT para ser mais produtivo no trabalho
   tool: null
   status: done
-
 - id: ia-para-pequenos-negocios-guia
-  title: "Guia de IA para pequenos negócios: por onde começar"
+  title: 'Guia de IA para pequenos negócios: por onde começar'
   tool: null
   status: done
-
 - id: como-automatizar-tarefas-ia-sem-programar
-  title: "Como automatizar tarefas repetitivas com IA sem programar"
+  title: Como automatizar tarefas repetitivas com IA sem programar
   tool: null
   status: done
-
 - id: hostinger-hospedagem-site-ia
-  title: "Como hospedar um site feito com ajuda de IA usando a Hostinger"
+  title: Como hospedar um site feito com ajuda de IA usando a Hostinger
   tool: hostinger
   status: pending
-
 - id: notion-vs-clickup-gestao-projetos
-  title: "Notion vs ClickUp: qual usar para gestão de projetos com IA"
+  title: 'Notion vs ClickUp: qual usar para gestão de projetos com IA'
   tool: notion
   status: pending
-
 - id: ia-generativa-texto-comparativo-ferramentas
-  title: "IA generativa de texto: comparativo das principais ferramentas"
+  title: 'IA generativa de texto: comparativo das principais ferramentas'
   tool: null
   status: pending
-
 - id: canva-vs-photoshop-ia-design
-  title: "Canva com IA vs Photoshop: qual vale mais a pena em 2026"
+  title: 'Canva com IA vs Photoshop: qual vale mais a pena em 2026'
   tool: canva
   status: pending
-
 - id: como-criar-conteudo-redes-sociais-com-ia
-  title: "Como criar conteúdo para redes sociais com IA em menos tempo"
+  title: Como criar conteúdo para redes sociais com IA em menos tempo
   tool: canva
   status: pending
-
 - id: ferramentas-ia-estudar-mais-rapido
-  title: "Ferramentas de IA para estudar e aprender mais rápido"
+  title: Ferramentas de IA para estudar e aprender mais rápido
   tool: null
   status: pending
-
 - id: automatizar-email-marketing-ia
-  title: "Como automatizar e-mail marketing com IA"
+  title: Como automatizar e-mail marketing com IA
   tool: null
   status: pending
-
 - id: ia-para-freelancers-aumentar-renda
-  title: "Como freelancers podem usar IA para aumentar a renda"
+  title: Como freelancers podem usar IA para aumentar a renda
   tool: null
-  status: pending
-
+  status: done
 - id: perplexity-vs-google-comparativo
-  title: "Perplexity vs Google: comparativo de busca com IA"
+  title: 'Perplexity vs Google: comparativo de busca com IA'
   tool: perplexity
   status: pending
-
 - id: melhores-apps-transcricao-ia
-  title: "Os melhores apps de transcrição de áudio com IA"
+  title: Os melhores apps de transcrição de áudio com IA
   tool: elevenlabs
   status: pending
-
 - id: como-escolher-ferramenta-ia-para-seu-negocio
-  title: "Como escolher a ferramenta de IA certa para o seu negócio"
+  title: Como escolher a ferramenta de IA certa para o seu negócio
   tool: null
   status: pending
