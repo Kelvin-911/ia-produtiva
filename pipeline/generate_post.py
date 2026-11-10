@@ -10,6 +10,7 @@ Uso:
 import datetime
 import os
 import sys
+import time
 from pathlib import Path
 
 import yaml
@@ -83,14 +84,17 @@ def parse_llm_output(raw: str) -> tuple[str, str]:
     return description, body
 
 
-def generate_one(topic: dict, affiliates: dict, dry_run: bool) -> bool:
+def generate_one(topic: dict, affiliates: dict, dry_run: bool) -> str:
+    """Retorna "ok", "quality_fail" (problema só deste tópico, vale tentar o
+    próximo) ou "api_fail" (a API/rede está com problema — tentar outro tópico
+    na sequência só gastaria mais cota do tier gratuito à toa)."""
     affiliate = affiliates.get(topic.get("tool")) if topic.get("tool") else None
     prompt = build_prompt(topic, affiliate)
     try:
         raw = generate(prompt)
     except LLMError as exc:
         print(f"[ERRO] Falha ao gerar '{topic['id']}': {exc}")
-        return False
+        return "api_fail"
 
     description, body = parse_llm_output(raw)
     frontmatter = {
@@ -114,10 +118,10 @@ def generate_one(topic: dict, affiliates: dict, dry_run: bool) -> bool:
             print(f"  - {e}")
         if not dry_run:
             out_path.unlink(missing_ok=True)
-        return False
+        return "quality_fail"
 
     print(f"[OK] Gerado: {out_path.relative_to(ROOT)}")
-    return True
+    return "ok"
 
 
 def main():
@@ -135,24 +139,35 @@ def main():
         return
 
     done_count = 0
-    for topic in pending:
+    api_failed = False
+    for i, topic in enumerate(pending):
         if done_count >= max_posts:
             break
-        success = generate_one(topic, affiliates, dry_run)
-        if success and not dry_run:
-            topic["status"] = "done"
+        if i > 0:
+            # Tier gratuito do Gemini limita ~5 requisições/minuto.
+            time.sleep(15)
+        result = generate_one(topic, affiliates, dry_run)
+        if result == "ok":
             done_count += 1
-        elif success and dry_run:
-            done_count += 1
+            if not dry_run:
+                topic["status"] = "done"
+        elif result == "api_fail":
+            # A API/rede está com problema agora — tentar o próximo tópico só
+            # gastaria mais cota do tier gratuito sem chance real de dar certo.
+            api_failed = True
+            break
+        # "quality_fail": tenta o próximo tópico, o problema é só deste.
 
     if not dry_run and done_count:
         save_backlog(topics)
     print(f"Concluído: {done_count} post(s) gerado(s).")
 
     if not dry_run and done_count == 0:
-        # Sinaliza falha pro GitHub Actions (ex: chave de API ausente/expirada)
-        # em vez de "funcionar silenciosamente" sem publicar nada.
+        # Sinaliza falha pro GitHub Actions (ex: chave de API ausente/expirada,
+        # ou a API fora do ar) em vez de "funcionar silenciosamente" sem publicar nada.
         sys.exit(1)
+    if api_failed and done_count < max_posts:
+        print("Aviso: parou cedo por falha da API; o cron de amanhã tenta de novo.")
 
 
 if __name__ == "__main__":
