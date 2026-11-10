@@ -48,7 +48,7 @@ def _generate_groq(prompt: str) -> str:
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise LLMError("GROQ_API_KEY não configurada.")
-    model = os.environ.get("GROQ_MODEL") or "llama-3.3-70b-versatile"
+    model = os.environ.get("GROQ_MODEL") or "openai/gpt-oss-120b"
     try:
         resp = requests.post(
             GROQ_URL,
