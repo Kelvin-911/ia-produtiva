@@ -55,20 +55,31 @@ Estrutura obrigatória da resposta:
 3. Depois o artigo em Markdown, com introdução, 3 a 5 seções usando "## ", uma seção de
    prós e contras quando fizer sentido, e uma conclusão com recomendação prática.
    O artigo deve ter pelo menos 700 palavras, tom direto e útil, sem enrolação,
-   sem inventar dados estatísticos específicos.
+   sem inventar dados estatísticos específicos. NÃO repita o título como um "# " no
+   início do artigo (o título já é exibido pela página); comece direto pela introdução.
+   Não use linhas só com "---" dentro do corpo do artigo.
 {tool_block}
 """
+
+
+def _strip_leading_h1(body: str) -> str:
+    # Rede de segurança: se o modelo ignorar a instrução e repetir o título como
+    # "# ..." na primeira linha, remove — a página já renderiza o título sozinha.
+    lines = body.split("\n", 1)
+    if lines[0].strip().startswith("# "):
+        return lines[1].strip() if len(lines) > 1 else ""
+    return body
 
 
 def parse_llm_output(raw: str) -> tuple[str, str]:
     if not raw.startswith("DESCRIPTION:"):
         # fallback: sem description explícita, usa as primeiras palavras do corpo
-        body = raw.strip()
+        body = _strip_leading_h1(raw.strip())
         description = " ".join(body.split()[:25])
         return description[:155], body
     first_line, _, rest = raw.partition("\n")
     description = first_line.replace("DESCRIPTION:", "").strip()[:155]
-    body = rest.split("---", 1)[-1].strip()
+    body = _strip_leading_h1(rest.split("---", 1)[-1].strip())
     return description, body
 
 

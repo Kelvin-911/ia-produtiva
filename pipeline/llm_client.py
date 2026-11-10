@@ -8,10 +8,7 @@ para usar Claude, sem alterar generate_post.py ou discover_topics.py.
 import os
 import requests
 
-GEMINI_URL = (
-    "https://generativelanguage.googleapis.com/v1beta/models/"
-    "gemini-2.0-flash:generateContent"
-)
+GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
 
 
@@ -23,8 +20,11 @@ def _generate_gemini(prompt: str) -> str:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise LLMError("GEMINI_API_KEY não configurada (veja SETUP.md).")
+    # Configurável porque a Google aposenta nomes de modelo de tempos em tempos
+    # (ex: gemini-2.0-flash foi descontinuado em favor do gemini-3.8-flash).
+    model = os.environ.get("GEMINI_MODEL") or "gemini-3.8-flash"
     resp = requests.post(
-        f"{GEMINI_URL}?key={api_key}",
+        f"{GEMINI_API_BASE}/{model}:generateContent?key={api_key}",
         json={"contents": [{"parts": [{"text": prompt}]}]},
         timeout=120,
     )

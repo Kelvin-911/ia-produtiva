@@ -29,6 +29,7 @@ jobs:
         working-directory: pipeline
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
           LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           MAX_POSTS_PER_DIA: ${{ secrets.MAX_POSTS_PER_DIA }}
