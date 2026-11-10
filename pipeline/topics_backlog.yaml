@@ -37,7 +37,7 @@
 - id: hostinger-hospedagem-site-ia
   title: Como hospedar um site feito com ajuda de IA usando a Hostinger
   tool: hostinger
-  status: pending
+  status: done
 - id: notion-vs-clickup-gestao-projetos
   title: 'Notion vs ClickUp: qual usar para gestão de projetos com IA'
   tool: notion
