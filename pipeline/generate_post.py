@@ -103,7 +103,7 @@ def generate_one(topic: dict, affiliates: dict, dry_run: bool) -> str:
         "description": description,
         "slug": topic["id"],
         "tool": topic.get("tool"),
-        "tags": ["ia", "produtividade"],
+        "tags": ["ia", "produtividade"] + ([topic["tool"]] if topic.get("tool") else []),
     }
 
     target_dir = PREVIEW_DIR if dry_run else POSTS_DIR

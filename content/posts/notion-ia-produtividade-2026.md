@@ -4,7 +4,7 @@ date: "2026-11-01"
 description: "Guia prático de Notion AI em 2026: o que ela faz bem, onde decepciona e como montar um workspace que realmente poupa tempo."
 slug: "notion-ia-produtividade-2026"
 tool: notion
-tags: ["ia", "produtividade"]
+tags: ["ia", "produtividade", "notion"]
 ---
 
 O Notion deixou de ser só um app de notas organizado em blocos. Com a camada de IA

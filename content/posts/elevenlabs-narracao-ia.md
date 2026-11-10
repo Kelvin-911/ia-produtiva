@@ -4,7 +4,7 @@ date: "2026-11-05"
 description: "ElevenLabs transforma texto em narração realista com IA. Veja como usar para vídeos, podcasts e quando ainda vale contratar locutor humano."
 slug: "elevenlabs-narracao-ia"
 tool: elevenlabs
-tags: ["ia", "audio"]
+tags: ["ia", "audio", "elevenlabs"]
 ---
 
 Narração profissional sempre foi um dos custos escondidos de produzir vídeo ou podcast:

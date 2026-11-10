@@ -6,12 +6,19 @@
   <title>{% block title %}{{ site.nome }}{% endblock %}</title>
   <meta name="description" content="{% block description %}{{ site.descricao }}{% endblock %}">
   <link rel="stylesheet" href="{{ root }}style.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.nome }}" href="{{ root }}rss.xml">
   {% block head %}{% endblock %}
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="{{ root }}">{{ site.nome }}</a>
     <p class="tagline">{{ site.descricao }}</p>
+    <nav class="site-nav">
+      <a href="{{ root }}">Início</a>
+      <a href="{{ root }}tags/">Categorias</a>
+      <a href="{{ root }}sobre/">Sobre</a>
+      <a href="{{ root }}rss.xml">RSS</a>
+    </nav>
   </header>
   <main>
     {% block content %}{% endblock %}

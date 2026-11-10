@@ -34,6 +34,12 @@ body {
   text-decoration: none;
 }
 .site-header .tagline { color: var(--muted); margin: 0.25rem 0 0; }
+.site-nav { margin-top: 0.8rem; display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.site-nav a { color: var(--accent); text-decoration: none; font-size: 0.95rem; }
+.site-nav a:hover { text-decoration: underline; }
+.tag-list { list-style: none; padding: 0; }
+.tag-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+.tag-list a { color: var(--accent); text-decoration: none; font-weight: 600; }
 .post-list { list-style: none; padding: 0; }
 .post-card {
   border-bottom: 1px solid var(--border);

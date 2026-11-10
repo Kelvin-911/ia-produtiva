@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Posts sobre {{ tag_name }} — {{ site.nome }}{% endblock %}
+{% block description %}Artigos sobre {{ tag_name }} no {{ site.nome }}.{% endblock %}
+{% block content %}
+<h1>Posts sobre "{{ tag_name }}"</h1>
+<ul class="post-list">
+  {% for post in posts %}
+  <li class="post-card">
+    <a href="{{ root }}posts/{{ post.frontmatter.slug }}/">
+      <h2>{{ post.frontmatter.title }}</h2>
+    </a>
+    <p class="meta">{{ post.frontmatter.date }}</p>
+    <p>{{ post.frontmatter.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+<p><a href="{{ root }}tags/">&larr; Ver todas as categorias</a></p>
+{% endblock %}

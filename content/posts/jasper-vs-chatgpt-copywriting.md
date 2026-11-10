@@ -4,7 +4,7 @@ date: "2026-11-02"
 description: "Comparamos Jasper AI e ChatGPT para copywriting: fluxo de trabalho, consistência de marca, preço e para quem cada um faz mais sentido."
 slug: "jasper-vs-chatgpt-copywriting"
 tool: jasper
-tags: ["ia", "copywriting"]
+tags: ["ia", "copywriting", "jasper"]
 ---
 
 Quem escreve copy para vender — anúncio, página de produto, e-mail de lançamento —

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Categorias — {{ site.nome }}{% endblock %}
+{% block description %}Todas as categorias de artigos do {{ site.nome }}.{% endblock %}
+{% block content %}
+<h1>Categorias</h1>
+<ul class="tag-list">
+  {% for tag, posts in tags.items() %}
+  <li><a href="{{ root }}tags/{{ tag }}/">{{ tag }}</a> <span class="meta">({{ posts|length }})</span></li>
+  {% endfor %}
+</ul>
+{% endblock %}

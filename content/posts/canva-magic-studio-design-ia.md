@@ -4,7 +4,7 @@ date: "2026-11-04"
 description: "Como usar o Magic Studio do Canva para criar posts, apresentações e artes com IA mesmo sem experiência em design."
 slug: "canva-magic-studio-design-ia"
 tool: canva
-tags: ["ia", "design"]
+tags: ["ia", "design", "canva"]
 ---
 
 Um dos maiores freios para quem precisa criar conteúdo visual — post, apresentação,

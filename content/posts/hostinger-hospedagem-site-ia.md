@@ -8,6 +8,7 @@ tool: hostinger
 tags:
 - ia
 - produtividade
+- hostinger
 ---
 
 A inteligência artificial tem facilitado a criação de sites, permitindo que profissionais e iniciantes gerem layouts, conteúdos e até códigos com poucos cliques. Depois de construir a página com a ajuda de ferramentas como ChatGPT, Copilot ou construtores de IA, o próximo passo — e muitas vezes o mais desafiador — é escolher onde e como hospedá‑la. Neste artigo, vamos mostrar de forma direta como publicar seu site IA na Hostinger, destacando os planos mais adequados, o processo de configuração e os principais prós e contras da plataforma.

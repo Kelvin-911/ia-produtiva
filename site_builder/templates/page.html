@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ page.frontmatter.title }} — {{ site.nome }}{% endblock %}
+{% block description %}{{ page.frontmatter.description }}{% endblock %}
+{% block content %}
+<article>
+  <h1>{{ page.frontmatter.title }}</h1>
+  <div class="post-body">{{ page.html_body|safe }}</div>
+  <p><a href="{{ root }}">&larr; Voltar para a página inicial</a></p>
+</article>
+{% endblock %}

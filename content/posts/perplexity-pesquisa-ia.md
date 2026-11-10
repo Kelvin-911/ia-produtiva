@@ -4,7 +4,7 @@ date: "2026-11-03"
 description: "Perplexity AI é bom para pesquisar com IA, mas não substitui o Google em tudo. Veja para quais buscas cada um ganha."
 slug: "perplexity-pesquisa-ia"
 tool: perplexity
-tags: ["ia", "pesquisa"]
+tags: ["ia", "pesquisa", "perplexity"]
 ---
 
 A promessa do Perplexity é simples de entender: em vez de uma lista de dez links azuis,
