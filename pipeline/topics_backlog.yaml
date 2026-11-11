@@ -45,7 +45,7 @@
 - id: ia-generativa-texto-comparativo-ferramentas
   title: 'IA generativa de texto: comparativo das principais ferramentas'
   tool: null
-  status: pending
+  status: done
 - id: canva-vs-photoshop-ia-design
   title: 'Canva com IA vs Photoshop: qual vale mais a pena em 2026'
   tool: canva
