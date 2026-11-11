@@ -79,11 +79,12 @@ def build():
     shutil.copytree(STATIC_DIR, OUT_DIR, dirs_exist_ok=True)
 
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)))
+    env.filters["slugify"] = slugify
     year = datetime.date.today().year
 
     index_tpl = env.get_template("index.html")
     (OUT_DIR / "index.html").write_text(
-        index_tpl.render(site=site, posts=posts, root="", year=year),
+        index_tpl.render(site=site, posts=posts, root="", year=year, path=""),
         encoding="utf-8",
     )
 
@@ -96,7 +97,8 @@ def build():
         affiliate = affiliates.get(tool_key) if tool_key else None
         (post_dir / "index.html").write_text(
             post_tpl.render(
-                site=site, post=post, affiliate=affiliate, root="../../", year=year
+                site=site, post=post, affiliate=affiliate, root="../../", year=year,
+                path=f"posts/{slug}/",
             ),
             encoding="utf-8",
         )
@@ -107,14 +109,14 @@ def build():
         page_dir = OUT_DIR / slug
         page_dir.mkdir(parents=True, exist_ok=True)
         (page_dir / "index.html").write_text(
-            page_tpl.render(site=site, page=page, root="../", year=year),
+            page_tpl.render(site=site, page=page, root="../", year=year, path=f"{slug}/"),
             encoding="utf-8",
         )
 
     tags_index_tpl = env.get_template("tags_index.html")
     (OUT_DIR / "tags").mkdir(parents=True, exist_ok=True)
     (OUT_DIR / "tags" / "index.html").write_text(
-        tags_index_tpl.render(site=site, tags=tags, root="../", year=year),
+        tags_index_tpl.render(site=site, tags=tags, root="../", year=year, path="tags/"),
         encoding="utf-8",
     )
 
@@ -124,7 +126,8 @@ def build():
         tag_dir.mkdir(parents=True, exist_ok=True)
         (tag_dir / "index.html").write_text(
             tag_tpl.render(
-                site=site, tag_name=tag_slug, posts=tag_posts, root="../../", year=year
+                site=site, tag_name=tag_slug, posts=tag_posts, root="../../", year=year,
+                path=f"tags/{tag_slug}/",
             ),
             encoding="utf-8",
         )

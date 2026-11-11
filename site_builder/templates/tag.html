@@ -2,17 +2,19 @@
 {% block title %}Posts sobre {{ tag_name }} — {{ site.nome }}{% endblock %}
 {% block description %}Artigos sobre {{ tag_name }} no {{ site.nome }}.{% endblock %}
 {% block content %}
-<h1>Posts sobre "{{ tag_name }}"</h1>
-<ul class="post-list">
+<section class="hero hero-sm">
+  <p class="eyebrow">Categoria</p>
+  <h1>{{ tag_name }}</h1>
+</section>
+<section class="post-grid" aria-label="Artigos sobre {{ tag_name }}">
   {% for post in posts %}
-  <li class="post-card">
-    <a href="{{ root }}posts/{{ post.frontmatter.slug }}/">
-      <h2>{{ post.frontmatter.title }}</h2>
-    </a>
-    <p class="meta">{{ post.frontmatter.date }}</p>
-    <p>{{ post.frontmatter.description }}</p>
-  </li>
+  <article class="post-card">
+    <h2><a href="{{ root }}posts/{{ post.frontmatter.slug }}/">{{ post.frontmatter.title }}</a></h2>
+    <p class="meta"><time datetime="{{ post.frontmatter.date }}">{{ post.frontmatter.date }}</time></p>
+    <p class="post-excerpt">{{ post.frontmatter.description }}</p>
+    <a class="read-more" href="{{ root }}posts/{{ post.frontmatter.slug }}/">Ler artigo &rarr;</a>
+  </article>
   {% endfor %}
-</ul>
-<p><a href="{{ root }}tags/">&larr; Ver todas as categorias</a></p>
+</section>
+<p class="back-link"><a href="{{ root }}tags/">&larr; Ver todas as categorias</a></p>
 {% endblock %}

@@ -5,27 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ site.nome }}{% endblock %}</title>
   <meta name="description" content="{% block description %}{{ site.descricao }}{% endblock %}">
+  <link rel="canonical" href="{{ site.base_url.rstrip('/') }}/{{ path }}">
+  <meta property="og:type" content="{{ 'article' if path.startswith('posts/') else 'website' }}">
+  <meta property="og:site_name" content="{{ site.nome }}">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:url" content="{{ site.base_url.rstrip('/') }}/{{ path }}">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ root }}style.css">
   <link rel="alternate" type="application/rss+xml" title="{{ site.nome }}" href="{{ root }}rss.xml">
   {% block head %}{% endblock %}
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
-    <a class="brand" href="{{ root }}">{{ site.nome }}</a>
-    <p class="tagline">{{ site.descricao }}</p>
-    <nav class="site-nav">
-      <a href="{{ root }}">Início</a>
-      <a href="{{ root }}tags/">Categorias</a>
-      <a href="{{ root }}sobre/">Sobre</a>
-      <a href="{{ root }}rss.xml">RSS</a>
-    </nav>
+    <div class="site-header-inner">
+      <a class="brand" href="{{ root }}">
+        <span class="brand-mark" aria-hidden="true">IA</span>
+        <span class="brand-name">{{ site.nome }}</span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="{{ root }}">Início</a>
+        <a href="{{ root }}tags/">Categorias</a>
+        <a href="{{ root }}sobre/">Sobre</a>
+        <a href="{{ root }}rss.xml">RSS</a>
+      </nav>
+    </div>
   </header>
-  <main>
+  <main id="conteudo">
     {% block content %}{% endblock %}
   </main>
   <footer class="site-footer">
-    <p>{{ site.aviso_afiliado }}</p>
-    <p>&copy; {{ year }} {{ site.nome }}</p>
+    <div class="site-footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">IA</span>
+        <p>{{ site.nome }}</p>
+      </div>
+      <nav class="footer-nav" aria-label="Rodapé">
+        <a href="{{ root }}">Início</a>
+        <a href="{{ root }}tags/">Categorias</a>
+        <a href="{{ root }}sobre/">Sobre</a>
+        <a href="{{ root }}rss.xml">RSS</a>
+      </nav>
+      <p class="footer-disclosure">{{ site.aviso_afiliado }}</p>
+      <p class="footer-copy">&copy; {{ year }} {{ site.nome }}</p>
+    </div>
   </footer>
 </body>
 </html>

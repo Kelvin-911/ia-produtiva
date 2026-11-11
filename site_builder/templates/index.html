@@ -1,14 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-<ul class="post-list">
+<section class="hero">
+  <h1>{{ site.nome }}</h1>
+  <p class="hero-lead">{{ site.descricao }}</p>
+</section>
+
+<section class="post-grid" aria-label="Últimos artigos">
   {% for post in posts %}
-  <li class="post-card">
-    <a href="{{ root }}posts/{{ post.frontmatter.slug }}/">
-      <h2>{{ post.frontmatter.title }}</h2>
-    </a>
-    <p class="meta">{{ post.frontmatter.date }}</p>
-    <p>{{ post.frontmatter.description }}</p>
-  </li>
+  <article class="post-card">
+    {% if post.frontmatter.tags %}
+    <div class="chip-row">
+      {% for tag in post.frontmatter.tags[:2] %}
+      <a class="chip" href="{{ root }}tags/{{ tag|slugify }}/">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <h2><a href="{{ root }}posts/{{ post.frontmatter.slug }}/">{{ post.frontmatter.title }}</a></h2>
+    <p class="meta"><time datetime="{{ post.frontmatter.date }}">{{ post.frontmatter.date }}</time></p>
+    <p class="post-excerpt">{{ post.frontmatter.description }}</p>
+    <a class="read-more" href="{{ root }}posts/{{ post.frontmatter.slug }}/">Ler artigo &rarr;</a>
+  </article>
   {% endfor %}
-</ul>
+</section>
 {% endblock %}

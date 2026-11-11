@@ -2,16 +2,28 @@
 {% block title %}{{ post.frontmatter.title }} — {{ site.nome }}{% endblock %}
 {% block description %}{{ post.frontmatter.description }}{% endblock %}
 {% block content %}
-<article>
-  <h1>{{ post.frontmatter.title }}</h1>
-  <p class="meta">{{ post.frontmatter.date }}</p>
+<article class="post">
+  <header class="post-header">
+    {% if post.frontmatter.tags %}
+    <div class="chip-row">
+      {% for tag in post.frontmatter.tags %}
+      <a class="chip" href="{{ root }}tags/{{ tag|slugify }}/">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <h1>{{ post.frontmatter.title }}</h1>
+    <p class="meta"><time datetime="{{ post.frontmatter.date }}">{{ post.frontmatter.date }}</time></p>
+  </header>
   <div class="post-body">{{ post.html_body|safe }}</div>
   {% if affiliate %}
   <aside class="affiliate-cta">
-    <p><strong>Quer testar {{ affiliate.nome }}?</strong>
-    <a href="{{ affiliate.url }}" rel="sponsored noopener" target="_blank">Acesse aqui</a>.</p>
+    <span class="affiliate-cta-icon" aria-hidden="true">&#9733;</span>
+    <div>
+      <p><strong>Quer testar {{ affiliate.nome }}?</strong></p>
+      <a href="{{ affiliate.url }}" rel="sponsored noopener" target="_blank">Acesse o site oficial &rarr;</a>
+    </div>
   </aside>
   {% endif %}
-  <p><a href="{{ root }}">&larr; Voltar para a página inicial</a></p>
+  <p class="back-link"><a href="{{ root }}">&larr; Voltar para a página inicial</a></p>
 </article>
 {% endblock %}

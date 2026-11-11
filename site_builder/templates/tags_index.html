@@ -2,10 +2,13 @@
 {% block title %}Categorias — {{ site.nome }}{% endblock %}
 {% block description %}Todas as categorias de artigos do {{ site.nome }}.{% endblock %}
 {% block content %}
-<h1>Categorias</h1>
-<ul class="tag-list">
+<section class="hero hero-sm">
+  <h1>Categorias</h1>
+  <p class="hero-lead">Navegue pelos artigos por ferramenta ou tema.</p>
+</section>
+<div class="chip-cloud">
   {% for tag, posts in tags.items() %}
-  <li><a href="{{ root }}tags/{{ tag }}/">{{ tag }}</a> <span class="meta">({{ posts|length }})</span></li>
+  <a class="chip chip-lg" href="{{ root }}tags/{{ tag }}/">{{ tag }} <span class="chip-count">{{ posts|length }}</span></a>
   {% endfor %}
-</ul>
+</div>
 {% endblock %}
