@@ -57,7 +57,7 @@
 - id: ferramentas-ia-estudar-mais-rapido
   title: Ferramentas de IA para estudar e aprender mais rápido
   tool: null
-  status: pending
+  status: done
 - id: automatizar-email-marketing-ia
   title: Como automatizar e-mail marketing com IA
   tool: null
