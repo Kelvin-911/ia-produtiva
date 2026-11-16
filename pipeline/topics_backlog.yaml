@@ -69,7 +69,7 @@
 - id: perplexity-vs-google-comparativo
   title: 'Perplexity vs Google: comparativo de busca com IA'
   tool: perplexity
-  status: pending
+  status: done
 - id: melhores-apps-transcricao-ia
   title: Os melhores apps de transcrição de áudio com IA
   tool: elevenlabs
