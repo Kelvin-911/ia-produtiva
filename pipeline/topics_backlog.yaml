@@ -78,3 +78,24 @@
   title: Como escolher a ferramenta de IA certa para o seu negócio
   tool: null
   status: pending
+- id: amazon-ia-livros
+  title: Como escrever, formatar e publicar seu livro no Kindle usando IA
+  tool: amazon_livros
+  status: pending
+- id: zapier-ia-fluxos
+  title: 'Automatizando fluxos de trabalho com Zapier e IA: exemplos práticos sem
+    código'
+  tool: null
+  status: pending
+- id: calendario-ia-inteligente
+  title: 'Calendário inteligente: otimize sua agenda com sugestões de IA'
+  tool: null
+  status: pending
+- id: notion-relatorios-financeiros
+  title: Gerando relatórios financeiros mensais no Notion com IA
+  tool: notion
+  status: pending
+- id: seo-ia-blog
+  title: 'Melhore o SEO do seu blog usando ferramentas de IA: guia passo a passo'
+  tool: null
+  status: pending
