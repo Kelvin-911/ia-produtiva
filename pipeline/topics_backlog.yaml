@@ -73,7 +73,7 @@
 - id: melhores-apps-transcricao-ia
   title: Os melhores apps de transcrição de áudio com IA
   tool: elevenlabs
-  status: pending
+  status: done
 - id: como-escolher-ferramenta-ia-para-seu-negocio
   title: Como escolher a ferramenta de IA certa para o seu negócio
   tool: null
