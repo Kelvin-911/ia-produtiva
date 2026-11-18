@@ -77,7 +77,7 @@
 - id: como-escolher-ferramenta-ia-para-seu-negocio
   title: Como escolher a ferramenta de IA certa para o seu negócio
   tool: null
-  status: pending
+  status: done
 - id: amazon-ia-livros
   title: Como escrever, formatar e publicar seu livro no Kindle usando IA
   tool: amazon_livros
