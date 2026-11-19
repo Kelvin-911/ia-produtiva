@@ -81,7 +81,7 @@
 - id: amazon-ia-livros
   title: Como escrever, formatar e publicar seu livro no Kindle usando IA
   tool: amazon_livros
-  status: pending
+  status: done
 - id: zapier-ia-fluxos
   title: 'Automatizando fluxos de trabalho com Zapier e IA: exemplos práticos sem
     código'
