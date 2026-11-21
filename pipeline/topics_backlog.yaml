@@ -90,7 +90,7 @@
 - id: calendario-ia-inteligente
   title: 'Calendário inteligente: otimize sua agenda com sugestões de IA'
   tool: null
-  status: pending
+  status: done
 - id: notion-relatorios-financeiros
   title: Gerando relatórios financeiros mensais no Notion com IA
   tool: notion
