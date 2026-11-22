@@ -94,7 +94,7 @@
 - id: notion-relatorios-financeiros
   title: Gerando relatórios financeiros mensais no Notion com IA
   tool: notion
-  status: pending
+  status: done
 - id: seo-ia-blog
   title: 'Melhore o SEO do seu blog usando ferramentas de IA: guia passo a passo'
   tool: null
