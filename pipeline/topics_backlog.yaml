@@ -99,3 +99,23 @@
   title: 'Melhore o SEO do seu blog usando ferramentas de IA: guia passo a passo'
   tool: null
   status: pending
+- id: notion-okr-ia
+  title: Como criar e acompanhar OKRs com a IA do Notion
+  tool: notion
+  status: pending
+- id: jasper-video-scripts
+  title: Gerando scripts de vídeos curtos para TikTok com Jasper AI
+  tool: jasper
+  status: pending
+- id: perplexity-research-academica
+  title: Usando Perplexity AI para pesquisas acadêmicas avançadas
+  tool: perplexity
+  status: pending
+- id: canva-branding-startup
+  title: Desenvolvendo identidade visual de startups com Canva Magic Studio e IA
+  tool: canva
+  status: pending
+- id: elevenlabs-dublagem-ead
+  title: Dublagem automática de cursos EAD usando ElevenLabs
+  tool: elevenlabs
+  status: pending
