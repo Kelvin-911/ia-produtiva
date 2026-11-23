@@ -98,7 +98,7 @@
 - id: seo-ia-blog
   title: 'Melhore o SEO do seu blog usando ferramentas de IA: guia passo a passo'
   tool: null
-  status: pending
+  status: done
 - id: notion-okr-ia
   title: Como criar e acompanhar OKRs com a IA do Notion
   tool: notion
