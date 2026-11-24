@@ -102,7 +102,7 @@
 - id: notion-okr-ia
   title: Como criar e acompanhar OKRs com a IA do Notion
   tool: notion
-  status: pending
+  status: done
 - id: jasper-video-scripts
   title: Gerando scripts de vídeos curtos para TikTok com Jasper AI
   tool: jasper
