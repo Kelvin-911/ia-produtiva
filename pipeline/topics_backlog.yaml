@@ -106,7 +106,7 @@
 - id: jasper-video-scripts
   title: Gerando scripts de vídeos curtos para TikTok com Jasper AI
   tool: jasper
-  status: pending
+  status: done
 - id: perplexity-research-academica
   title: Usando Perplexity AI para pesquisas acadêmicas avançadas
   tool: perplexity
