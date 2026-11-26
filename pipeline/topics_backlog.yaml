@@ -110,7 +110,7 @@
 - id: perplexity-research-academica
   title: Usando Perplexity AI para pesquisas acadêmicas avançadas
   tool: perplexity
-  status: pending
+  status: done
 - id: canva-branding-startup
   title: Desenvolvendo identidade visual de startups com Canva Magic Studio e IA
   tool: canva
