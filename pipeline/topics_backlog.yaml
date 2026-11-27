@@ -114,7 +114,7 @@
 - id: canva-branding-startup
   title: Desenvolvendo identidade visual de startups com Canva Magic Studio e IA
   tool: canva
-  status: pending
+  status: done
 - id: elevenlabs-dublagem-ead
   title: Dublagem automática de cursos EAD usando ElevenLabs
   tool: elevenlabs
